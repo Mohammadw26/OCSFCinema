@@ -4,6 +4,7 @@
 
 package il.cshaifasweng.OCSFMediatorExample.client;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,8 +23,8 @@ public class PrimaryController {
     private Button catalogBtn; // Value injected by FXMLLoader
 
     @FXML
-    void showCatalog(ActionEvent event) {
-
+    void showCatalog() throws IOException {
+    	App.setRoot("catalog");
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
