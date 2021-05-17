@@ -1,24 +1,17 @@
 package il.cshaifasweng.OCSFMediatorExample.entities;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 @Entity
 @Table(name = "images")
+
 public class Image {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	private String imgName;
+	@Column(name = "image_name")
+	private String name;
     @Column(length = 100000000)
     private byte[] imagePixels;
     
@@ -28,21 +21,16 @@ public class Image {
     public Image() {}
     
     public Image(String name, byte[] imagePixels) {
-        this.imgName = name;
+        this.name = name;
         this.imagePixels = imagePixels;
     }
 
-	public int getId() {
-		return id;
-	}
-	
-
-	public String getImgName() {
-		return imgName;
+	public String getName() {
+		return name;
 	}
 
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public byte[] getImagePixels() {
@@ -52,13 +40,13 @@ public class Image {
 	public void setImagePixels(byte[] imagePixels) {
 		this.imagePixels = imagePixels;
 	}
-
 	public Movie getMovie() {
 		return movie;
 	}
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+		movie.setMovieImage(this);
 	}
     
 }
