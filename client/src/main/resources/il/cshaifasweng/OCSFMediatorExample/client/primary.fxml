@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
    <children>
-      <Button fx:id="catalogBtn" layoutX="105.0" layoutY="128.0" mnemonicParsing="false" onAction="#showCatalog" text="Show Catalog" />
-      <Label layoutX="113.0" layoutY="29.0" text="Welcome">
+      <Button fx:id="catalogBtn" layoutX="240.0" layoutY="344.0" mnemonicParsing="false" onAction="#showCatalog" text="Show Catalog" />
+      <Label layoutX="221.0" layoutY="194.0" text="Welcome">
          <font>
-            <Font size="18.0" />
+            <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutX="93.0" layoutY="72.0" text="The Siteya Cinema">
+      <Label layoutX="200.0" layoutY="250.0" text="The Sirteya Cinema">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
          </font>
       </Label>
    </children>
