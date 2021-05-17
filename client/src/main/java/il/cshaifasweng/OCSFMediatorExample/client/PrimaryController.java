@@ -4,6 +4,7 @@
 
 package il.cshaifasweng.OCSFMediatorExample.client;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,7 +24,21 @@ public class PrimaryController {
 
     @FXML
     void showCatalog(ActionEvent event) {
-
+    	
+    	try {
+			SimpleClient.getClient().sendToServer("#warning");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    
+    	try {
+			App.setRoot("showCatalog");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
