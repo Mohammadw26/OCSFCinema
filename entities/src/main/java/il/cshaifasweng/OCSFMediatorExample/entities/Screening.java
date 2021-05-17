@@ -1,3 +1,4 @@
+
 package il.cshaifasweng.OCSFMediatorExample.entities;
 
 
@@ -19,22 +20,18 @@ public class Screening {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int screeningDay;
-	private int screeningMonth;
-	private int screeningYear;
-	private int screeningTime;
+	private String screeningDate;
+	private String screeningTime;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "screenings")
+	@JoinColumn(name = "movie")
 	private Movie movie;
 	
 	public Screening() {};
 	
-	public Screening (int day, int month, int year, int time, Movie movie) {
-		screeningDay = day;
-		screeningMonth = month;
-		screeningYear = year;
-		screeningTime = time;
+	public Screening (String idate, String itime, Movie movie) {
+		screeningDate = idate;
+		screeningTime = itime;
 		this.movie = movie;
 	}
 
@@ -46,37 +43,22 @@ public class Screening {
 		this.id = id;
 	}
 
-	public int getScreeningDay() {
-		return screeningDay;
-	}
-
-	public void setScreeningDay(int screeningDay) {
-		this.screeningDay = screeningDay;
-	}
-
-	public int getScreeningMonth() {
-		return screeningMonth;
-	}
-
-	public void setScreeningMonth(int screeningMonth) {
-		this.screeningMonth = screeningMonth;
-	}
-
-	public int getScreeningYear() {
-		return screeningYear;
-	}
-
-	public void setScreeningYear(int screeningYear) {
-		this.screeningYear = screeningYear;
-	}
-
-	public int getScreeningTime() {
+	public String getTime() {
 		return screeningTime;
 	}
 
-	public void setScreeningTime(int screeningTime) {
+	public void setTime(String screeningTime) {
 		this.screeningTime = screeningTime;
 	}
+	
+	public String getDate() {
+		return screeningDate;
+	}
+
+	public void setDate(String screeningDate) {
+		this.screeningDate = screeningDate;
+	}
+
 
 	public Movie getMovie() {
 		return movie;
@@ -85,8 +67,5 @@ public class Screening {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-	
-	
-	
 
 }
