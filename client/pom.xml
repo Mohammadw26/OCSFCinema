@@ -33,7 +33,7 @@
 			<classifier>win</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.openjfx</groupId>
+ 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
 			<version>${javafx.version}</version>
 			<classifier>linux</classifier>
@@ -50,7 +50,7 @@
 			<version>3.2.0</version>
 		</dependency>
 		<dependency>
-			<groupId>${groupId}</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>entities</artifactId>
 		</dependency>
 	</dependencies>

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
    <children>
-      <Button fx:id="catalogBtn" layoutX="240.0" layoutY="344.0" mnemonicParsing="false" onAction="#showCatalog" text="Show Catalog" />
-      <Label layoutX="221.0" layoutY="194.0" text="Welcome">
+      <ImageView fitHeight="695.0" fitWidth="918.0" layoutY="-5.0" pickOnBounds="true">
+         <image>
+            <Image url="@SirtyaWelcome.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="showCatalog" layoutX="398.0" layoutY="399.0" mnemonicParsing="false" onAction="#sendCatalogRequest" prefHeight="31.0" prefWidth="121.0" text="show catalog">
          <font>
-            <Font size="31.0" />
-         </font>
-      </Label>
-      <Label layoutX="200.0" layoutY="250.0" text="The Sirteya Cinema">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
+            <Font name="Comic Sans MS Bold Italic" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
