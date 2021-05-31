@@ -1,6 +1,7 @@
 package il.cshaifasweng.OCSFMediatorExample.entities;
 
-
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,40 +10,52 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "movies")
-public class Movie {
+public class Movie implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6631717836650221159L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String movieTitle;
-	private String producer;
-	private String starring;
+	private String movieProducer;
+	private String starringActors;
 	private String movieDescription;
-	private int price;
+	private double ticketCost;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Image.class)
-	private Image image;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "movie")
 	private List<Screening> screenings;
 	
+	@ManyToMany(mappedBy = "movies",
+	cascade = {CascadeType.PERSIST, CascadeType.MERGE},	targetEntity = SirtyaBranch.class)
+	private List<SirtyaBranch> sirtyaBranch;
 	
-	public Movie() {};
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER,targetEntity = Image.class)
+	private Image image;
 	
-	public Movie (String movieTitle, String producer, String starring, String movieDescription, int price, Image image) {
-		this.movieTitle = movieTitle;
-		this.producer = producer;
-		this.starring = starring;
-		this.movieDescription = movieDescription;
-		this.price = price;
+	public Movie() {}
+	
+	public Movie (String title, String producer, String actors, String description, double cost,Image image) {
+		this.movieTitle = title;
+		this.movieProducer = producer;
+		this.starringActors = actors;
+		this.movieDescription = description;
+		this.ticketCost = cost;
+		this.setImage(image);
+		this.screenings = new ArrayList<Screening>();
+		this.sirtyaBranch = new ArrayList<SirtyaBranch>();
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getMovieTitle() {
@@ -53,20 +66,20 @@ public class Movie {
 		this.movieTitle = movieTitle;
 	}
 
-	public String getProducer() {
-		return producer;
+	public String getMovieProducer() {
+		return movieProducer;
 	}
 
-	public void setProducer(String producer) {
-		this.producer = producer;
+	public void setMovieProducer(String movieProducer) {
+		this.movieProducer = movieProducer;
 	}
 
-	public String getStarring() {
-		return starring;
+	public String getStarringActors() {
+		return starringActors;
 	}
 
-	public void setStarring(String starring) {
-		this.starring = starring;
+	public void setStarringActors(String starringActors) {
+		this.starringActors = starringActors;
 	}
 
 	public String getMovieDescription() {
@@ -77,37 +90,43 @@ public class Movie {
 		this.movieDescription = movieDescription;
 	}
 
+	public double getTicketCost() {
+		return ticketCost;
+	}
+
+	public void setTicketCost(double ticketCost) {
+		this.ticketCost = ticketCost;
+	}
+
 	public List<Screening> getScreenings() {
 		return screenings;
 	}
 
+	/*public void addScreenings(Screening...screenings) {
+		for (Screening screening : screenings) {
+			this.getScreenings().add(screening);
+		}
+	}*/
+	
 	public void setScreenings(List<Screening> screenings) {
 		this.screenings = screenings;
 	}
 	
-	public void addScreening(Screening...Screenings) {
-		for (Screening screening : Screenings) {
-			screenings.add(screening);
-			screening.setMovie(this);
-		}
-	}
-	
-	public void setMoviePrice(int price) {
-		this.price = price;
+	public List<SirtyaBranch> getSirtyaBranch() {
+		return sirtyaBranch;
 	}
 
-	public int getMoviePrice() {
-		return price;
-	}
-	
-	public void setMovieImage(Image img) {
-		this.image = img;
-		img.setMovie(this);
+	public void setSirtyaBranch(List<SirtyaBranch> sirtyaBranch) {
+		this.sirtyaBranch = sirtyaBranch;
 	}
 
-	public Image getMovieImage() {
+	public Image getImage() {
 		return image;
 	}
-
+	
+	public void setImage(Image image) {
+		this.image = image;
+		image.setMovie(this);
+	}
 	
 }
